@@ -1867,12 +1867,14 @@ h1, h2, h3, h4 {
     color: var(--accent-warm); /* テラコッタ */
     background: rgba(184, 125, 103, 0.08);
     border: 1.5px solid var(--accent-warm);
-    border-radius: 99px;
+    /* 🟢 枠線を「手書きで描いたようなゆるい歪みの楕円」に変更 */
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     padding: 0.25rem 0.9rem;
     letter-spacing: 0.06em;
     display: inline-block;
     position: relative;
-    transform: rotate(-1.5deg); /* 手書きの揺らぎを出すため少し傾ける */
+    /* 🟢 文字のボヤケを防ぐため、全体の傾き（rotate）を廃止して水平化 */
+    transform: none; 
     font-family: var(--font-noto);
 }
 
