@@ -1,0 +1,1916 @@
+/* ==========================================================================
+   🎨 LINE配信用 LP デザインシステム (style.css)
+   長友ホーム AI戦略本部 - 「遊び心を、カタチに。」デザイン画像完全再現版
+   ========================================================================== */
+
+/* 🌐 Google Fonts 読込 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@500;700;800;900&family=Caveat:wght@700&display=swap');
+
+/* 🎨 変数定義（ジャパンディ・ソフトミニマル調） */
+:root {
+    --primary-bg: #f9f6f0;     /* 背景色：パウダリーな温かみのある生成り・アイボリー */
+    --primary: #f2ede4;        /* セクションの切り替え等に使う少し濃いベージュ */
+    --primary-light: #fdfcfb;  /* カード背景等に使う、より明るいアイボリーホワイト */
+    
+    --text-main: #2c3033;      /* 文字色：墨色に近い柔らかいチャコール */
+    --text-muted: #62676c;     /* 補足文字用 */
+    
+    --secondary: #5f7568;      /* アクセント：自然由来の美しいセージグリーン */
+    --secondary-light: #a4b5aa;/* 淡いセージグリーン（グラデーションや装飾用） */
+    --accent-warm: #b87d67;    /* テラコッタ（温かみを足したい場合の差し色） */
+    --line-green: #06c755;     /* 鮮やかなLINE公式グリーン */
+    
+    --bg-base: #ece7e0;        /* デスクトップ表示時の外枠背景 */
+    --border: rgba(95, 117, 104, 0.22); /* セージグリーンベースの柔らかい境界線 */
+    
+    --btn-bg: #5f7568;         /* ボタン用：金属光沢からマットな質感へ */
+    --btn-text: #ffffff;
+    
+    --shadow-sm: 0 4px 12px rgba(44, 48, 51, 0.04);
+    --shadow-md: 0 8px 24px rgba(44, 48, 51, 0.06);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --font-outfit: 'Outfit', sans-serif;
+    --font-noto: 'Noto Sans JP', sans-serif;
+}
+
+/* 🧹 リセット ＆ 基本設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-noto);
+    background-color: var(--bg-base); /* 外枠を柔らかいベージュグレーへ */
+    color: var(--text-main);
+    line-height: 1.6;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/* 📦 全体を包む絶対安全なモバイルラッパー */
+.lp-container {
+    width: 100%;
+    max-width: 500px; /* PC表示での最大幅 */
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: var(--primary-bg); /* パウダリーなアイボリー背景 */
+    box-shadow: 0 0 40px rgba(44, 48, 51, 0.1); /* 柔らかい影 */
+    position: relative;
+    padding-bottom: 120px; /* 追従バー用の下部余白を追加 */
+    overflow-x: hidden;
+}
+
+/* 🖼️ 画像・インライン要素 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* 🔹 セクション共通設定 */
+.section {
+    padding: 3.5rem 1.5rem;
+    position: relative;
+}
+
+.section-title-wrap {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* 日本語メイン見出し（大きく、太く、はっきりと読ませる） */
+.section-title-ja {
+    font-family: var(--font-noto);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+/* 英語サブ見出し（小さく上品なセージグリーン） */
+.section-title-en {
+    font-family: var(--font-outfit);
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* 🌟 キラキラ星（グリッター）とあしらい（カスタムSVG＆ドット） */
+.sparkle {
+    position: absolute;
+    color: var(--secondary);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 5;
+    animation: sparkle-glow 3s infinite alternate ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* カスタムSVG星の基本設定 */
+.svg-sparkle-4,
+.svg-sparkle-8 {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    display: block;
+}
+
+/* ゴールドドット群の配置 */
+.gold-dots {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--secondary-light) 0%, var(--secondary) 100%);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+}
+
+.d-1 { width: 10px; height: 10px; top: 0; left: 0; }
+.d-2 { width: 6px; height: 6px; top: 15px; left: 20px; }
+.d-3 { width: 8px; height: 8px; top: -12px; left: 32px; }
+.d-4 { width: 5px; height: 5px; top: 24px; left: -8px; }
+.d-5 { width: 12px; height: 12px; top: 5px; left: -22px; }
+
+@keyframes sparkle-glow {
+    0% { transform: scale(0.85); opacity: 0.5; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+
+.sp-1 { top: 3.5rem; left: 2.2rem; width: 1.8rem; height: 1.8rem; }
+.sp-2 { top: 2.5rem; right: 2.2rem; width: 2.2rem; height: 2.2rem; animation-delay: 0.5s; }
+.sp-3 { top: 12.5rem; left: 2.5rem; width: 10px; height: 10px; animation-delay: 1s; }
+.sp-4 { top: 1rem; right: 3.2rem; width: 1.8rem; height: 1.8rem; }
+.sp-5 { top: 1rem; right: 1rem; width: 1.5rem; height: 1.5rem; }
+.sp-6 { top: 2rem; right: 2.2rem; width: 1.8rem; height: 1.8rem; }
+
+/* ==========================================================================
+   🏠 1. ファーストビュー (FV)
+   ========================================================================== */
+.hero {
+    position: relative;
+    padding: 3rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* 🎨 パウダリーアイボリーから薄ベージュへの心地よいグラデーション */
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-bg) 100%);
+}
+
+.hero-header-text {
+    margin-bottom: 2.2rem;
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+}
+
+.hero-subtitle {
+    font-family: var(--font-outfit);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    text-indent: 0.32em; /* センタリングのズレ補正 */
+}
+
+.hero-meta {
+    font-size: 0.95rem; /* スマホでの視認性向上のため拡大 */
+    color: var(--text-main);
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+.hero-date {
+    font-size: 1.15rem; /* スマホでの視認性向上のため拡大 */
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.hero-time {
+    color: var(--text-main); /* コントラスト向上 */
+}
+
+.hero-location {
+    color: var(--text-main); /* コントラスト向上 */
+}
+
+/* 🎨 四隅の背景装飾グラフィックアセット (SVGインライン描画用の配置) */
+.hero-bg-blob-svg {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.bg-blob-left-top {
+    top: -2.5rem;
+    left: -2.5rem;
+    width: 170px;
+    height: 170px;
+    transform: rotate(10deg);
+}
+
+.bg-blob-right-bottom {
+    top: 15rem;
+    right: -2.5rem;
+    width: 140px;
+    height: 140px;
+    transform: rotate(-15deg);
+}
+
+/* 白い泡状のドット */
+.hero-bg-bubble {
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 130px;
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-bg-bubble svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 📸 アメーバ状（ふっくらアメーバ型）メイン画像 ＆ 背面レイヤーアセット */
+.hero-image-wrap {
+    width: 100%;
+    max-width: 440px; /* 横幅を広げて写真を大きく見せる */
+    height: 320px;    /* 高さを十分に確保して縦に潰れるのを解消 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    margin-top: 1.5rem;
+}
+
+/* アメーバ切り抜きサイズ調整 */
+.hero-blob-shape {
+    clip-path: url(#hero-blob-clip);
+    width: 380px;
+    height: 290px;
+}
+
+.hero-image-wrap .amoeba-clip.hero-blob-shape {
+    position: relative;
+    z-index: 5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 柔らかい影に変更してベージュ背景と馴染ませる */
+    filter: drop-shadow(0 12px 28px rgba(45, 43, 42, 0.2));
+}
+
+/* 背面ゴールドアメーバのSVG配置（白フチ・にじみの完全解消） */
+.hero-blob-bg-svg {
+    position: absolute;
+    width: 410px;
+    height: 310px;
+    z-index: 3; /* 写真のすぐ裏 */
+    transform: rotate(-3deg) translate(-2px, -4px);
+    filter: drop-shadow(0 4px 15px rgba(189, 160, 122, 0.32));
+}
+
+/* 手書き風ゴールドの伸びるライン */
+.hero-blob-line {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    bottom: -22px;
+    right: -22px;
+    z-index: 2; /* 最背面 */
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.hero-blob-line svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+   🖼️ SVG クリップパス用ラッパー
+   ========================================================================== */
+.amoeba-clip {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.amoeba-clip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.amoeba-clip:hover img {
+    transform: scale(1.08);
+}
+
+/* 各形状のクリップパス適用 */
+.kidney-shape {
+    clip-path: url(#kidney-clip);
+}
+
+.blob-shape-a {
+    clip-path: url(#blob-clip-a);
+}
+
+.blob-shape-b {
+    clip-path: url(#blob-clip-b);
+}
+
+.blob-shape-c {
+    clip-path: url(#blob-clip-c);
+}
+
+.laptop-shape {
+    clip-path: url(#laptop-clip);
+}
+
+/* ==========================================================================
+   📝 2. TYPOGRAPHY (タイポグラフィ装飾セクション)
+   ========================================================================== */
+.typography-section {
+    padding: 3rem 1.5rem 4rem;
+}
+
+/* 斜めのテキストライン */
+.deco-slanted-text {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-4deg);
+}
+
+.slanted-line {
+    position: absolute;
+    width: 110%;
+    height: 1px;
+    background-color: var(--accent-warm); /* 差し色のテラコッタへ */
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.slanted-content {
+    font-family: 'Caveat', cursive;
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--accent-warm); /* 差し色のテラコッタへ */
+    background-color: var(--primary-bg); /* 新しいアイボリー背景に合わせる */
+    padding: 0 1.2rem;
+    letter-spacing: 0.05em;
+    z-index: 2;
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(-2px);
+}
+
+.typo-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.typo-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.typo-heading {
+    font-size: 1.65rem;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+}
+
+.typo-event-info {
+    font-size: 0.9rem; /* スマホでの視認性向上のため拡大 */
+    color: var(--text-main); /* コントラスト向上 */
+    line-height: 1.6;
+}
+
+.typo-event-info .typo-date {
+    font-size: 1.05rem; /* スマホでの視認性向上のため拡大 */
+    font-weight: 700;
+    color: var(--secondary); /* ハッキリと見える真鍮ゴールド */
+}
+
+.typo-event-info .typo-place span {
+    font-size: 0.8rem; /* 拡大 */
+}
+
+.typo-right {
+    padding-top: 0.5rem;
+}
+
+.typo-japanese-lead {
+    font-family: var(--font-noto);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+/* 手書き風の矢印 */
+.arrow-deco {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 2rem;
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   🖼️ 3. EVENT FEATURES (見どころ3選)
+   ========================================================================== */
+.features-section {
+    background-color: var(--primary-light);
+}
+
+.feature-card {
+    display: grid;
+    grid-template-columns: 0.8fr 1.25fr;
+    gap: 1rem;
+    align-items: center;
+    /* 🪵 アイボリーホワイトの明るいカード背景 */
+    background-color: var(--primary-light); 
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(44, 48, 51, 0.03); /* 柔らかい影 */
+    border: 1px solid var(--border);
+}
+
+.feature-card:last-child {
+    margin-bottom: 0;
+}
+
+.feat-img-container {
+    height: 130px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.feat-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feat-content {
+    position: relative;
+    padding-right: 3.2rem; /* アイコン表示用の右余白を縮小してテキスト幅を確保 */
+}
+
+.feat-title {
+    font-size: 0.92rem; /* 1.05rem から縮小して1行に収める */
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+.feat-subtitle {
+    font-family: var(--font-outfit);
+    font-size: 0.82rem; /* スマホ視認性向上のため拡大 */
+    font-weight: 500;
+    color: rgba(45, 43, 42, 0.65); /* 明るい背景に合わせて濃いグレーブラウンへ */
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.feat-subtitle.font-japanese {
+    font-family: var(--font-noto);
+    font-size: 0.88rem; /* スマホ視認性向上のため拡大 */
+    color: var(--text-muted); /* 明るい背景に合わせて見やすいグレーブラウンへ */
+    font-weight: 700;
+}
+
+.feat-icon-wrap {
+    position: absolute;
+    top: 50%;
+    right: 0.2rem;
+    transform: translateY(-50%);
+    width: 2.8rem; /* 3.6rem から縮小して余白を確保 */
+    height: 2.8rem;
+    pointer-events: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feat-deco-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ==========================================================================
+   🎨 4. RENOVATION DETAILS (仕様詳細)
+   ========================================================================== */
+.details-section {
+    background-color: var(--primary);
+}
+
+.details-subtitle {
+    font-family: var(--font-noto);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-align: center;
+    margin-top: -1.8rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.03em;
+}
+
+/* 6枚のアメーバ画像グリッド (3段2列構成) */
+.details-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem; /* スマホで見やすいよう、段同士の余白を少し広げる */
+    margin-bottom: 3.5rem;
+}
+
+.gallery-row-2col {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem; /* 画像同士の横幅の余白 */
+    width: 100%;
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    flex: 1; /* 各列を均等幅に広げる */
+}
+
+.gallery-item .amoeba-clip {
+    width: 100%;
+    max-width: 165px; /* スマホ画面で最大の大きさ（165px×165px）を確保 */
+    height: auto; /* 高さを自動にし、アスペクト比崩れを防止 */
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-label {
+    font-family: var(--font-outfit);
+    font-size: 0.8rem; /* ラベルの視認性を向上 */
+    color: var(--secondary-light); /* より見やすいシャンパンゴールドへ調整 */
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+/* 下部アーチとテキスト */
+.details-arch-deco {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arch-text {
+    position: absolute;
+    bottom: 3.4rem; /* 1.8rem から 3.4rem へ引き上げ、アーチ線の上へ浮かせる */
+    font-family: var(--font-outfit);
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: var(--secondary);
+    letter-spacing: 0.1em;
+}
+
+.arch-lead-text {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1.2rem;
+    line-height: 1.8;
+    max-width: 340px;
+    font-weight: 500;
+    word-break: keep-all;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   🪵 5. フッター (CTA)
+   ========================================================================== */
+.footer-cta {
+    position: relative;
+    padding: 4rem 1.5rem;
+    /* 🪵 新しいパウダリーアイボリーで木目テクスチャを優しく溶け込ませる */
+    background-image: linear-gradient(rgba(249, 246, 240, 0.78), rgba(249, 246, 240, 0.78)), url('images/wood_pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.footer-sparkle {
+    position: absolute;
+    color: var(--secondary);
+    opacity: 0.35;
+    pointer-events: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    z-index: 1;
+}
+
+.footer-sparkle.left {
+    top: 2rem;
+    left: 2rem;
+}
+
+.footer-sparkle.right {
+    bottom: 2rem;
+    right: 2rem;
+}
+
+/* CTA案内カード (明るいすりガラス＆ゴールド枠) */
+.cta-card {
+    background: rgba(255, 255, 255, 0.65); /* 明るい白半透明 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(181, 157, 124, 0.45);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 8px 24px rgba(45, 43, 42, 0.08); /* 柔らかい影 */
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.cta-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--secondary);
+    background: rgba(181, 157, 124, 0.08);
+    border: 1.5px solid var(--secondary);
+    border-radius: 99px;
+    padding: 0.2rem 0.8rem;
+    letter-spacing: 0.08em;
+}
+
+.cta-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+}
+
+.cta-card-text {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 360px;
+    text-align: justify;
+    text-justify: inter-character;
+}
+
+/* ステップフロー */
+.cta-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(45, 43, 42, 0.10); /* 明るい境界線へ */
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    flex: 1;
+}
+
+.step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: var(--btn-bg); /* セージグリーン背景 */
+    color: #ffffff;
+    font-family: var(--font-outfit);
+    font-size: 0.75rem;
+    font-weight: 900;
+}
+
+.step-txt {
+    font-size: 0.68rem;
+    color: var(--text-main); /* 視認性向上のため暗いメイン文字へ */
+    font-weight: 700;
+}
+
+.step-arrow {
+    font-size: 0.8rem;
+    color: rgba(181, 157, 124, 0.6);
+    margin-bottom: 0.8rem; /* 番号の高さに合わせる */
+}
+
+/* またはお電話で */
+.footer-phone-link {
+    margin-top: 1.5rem;
+    text-align: center;
+    z-index: 2;
+}
+
+.phone-link-btn {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.phone-link-btn:hover {
+    color: var(--secondary);
+}
+
+/* 🟢 マットオリーブグリーンカプセルボタン */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    height: 52px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(45, 43, 42, 0.1);
+}
+
+.btn-metallic-gold {
+    background: var(--line-green); /* LINE公式グリーンで目立たせる */
+    color: #ffffff; /* 白文字でくっきり表示 */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2), 
+        0 4px 12px rgba(6, 199, 85, 0.3); /* 影もグリーン系に変更 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* ボタン光彩スイープ */
+.btn-metallic-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: sweep 4.5s infinite ease-in-out;
+}
+
+@keyframes sweep {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+
+.btn-metallic-gold:active {
+    transform: scale(0.96);
+    box-shadow: 
+        inset 0 4px 6px rgba(0, 0, 0, 0.15),
+        0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* パルス波紋 */
+.pulse-btn {
+    position: relative;
+}
+
+.pulse-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    height: 260px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 3.5s infinite ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    80% { transform: translate(-50%, -50%) scale(1.25); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1.25); opacity: 0; }
+}
+
+/* ♿ 視覚効果の制限（OSレベルでのアニメーション減速対応） */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ==========================================================================
+   🟢 追従型フローティングCTAボタン (スマホ・PC対応)
+   ========================================================================== */
+.floating-cta-bar {
+    position: fixed;
+    bottom: 0; /* 画面の最下部ぴったりに固定 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* 横幅いっぱいに広げる */
+    max-width: 500px; /* コンテナの最大幅に合わせる */
+    background: rgba(249, 246, 240, 0.96); /* すりガラス効果を高めて背後の文字被りを防ぐ */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border); /* 上部のみ境界線を入れる */
+    border-radius: 0; /* 角丸をなくす */
+    padding: 0.8rem 1.2rem calc(0.8rem + env(safe-area-inset-bottom, 0px)); /* 下部にiPhone等のセーフエリア余白を確保 */
+    z-index: 90;
+    box-shadow: 0 -4px 16px rgba(44, 48, 51, 0.08); /* 影を上向きに変更 */
+    box-sizing: border-box;
+}
+
+.floating-cta-btn {
+    animation: jelly 4s infinite;
+}
+
+@keyframes jelly {
+    0%, 100% { transform: scale(1); }
+    45% { transform: scale(1.02); }
+    50% { transform: scale(0.98); }
+    55% { transform: scale(1.01); }
+    60% { transform: scale(1); }
+}
+
+
+
+/* ==========================================================================
+   🟢 LINE連携予約カレンダー (デモモーダル・ジャパンディ調)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    background-color: rgba(45, 43, 42, 0.45); /* 柔らかい暗さに変更 */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--primary-light); /* 明るいベージュ */
+    width: 100%;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    box-shadow: 0 -8px 30px rgba(45, 43, 42, 0.15); /* 柔らかい影に変更 */
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    border-top: 1px solid var(--border);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    font-weight: 800;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.calendar-dummy {
+    background-color: var(--primary);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.calendar-header {
+    text-align: center;
+    font-family: var(--font-outfit);
+    font-weight: 800;
+    color: var(--secondary); /* 真鍮ゴールドに変更 */
+    margin-bottom: 0.8rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4rem;
+    text-align: center;
+}
+
+.calendar-day-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    padding-bottom: 0.3rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-main);
+}
+
+.calendar-day.disabled {
+    color: #b8b0a9; /* より明るい非活性カラー */
+    cursor: not-allowed;
+}
+
+.calendar-day.active {
+    background-color: rgba(95, 117, 104, 0.12); /* セージグリーンの薄い背景 */
+    color: var(--text-main);
+}
+
+.calendar-day.selected {
+    background-color: var(--secondary); /* セージグリーンで上品に */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(95, 117, 104, 0.22);
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.time-slot {
+    background: var(--primary);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-main);
+}
+
+.time-slot.selected {
+    background-color: var(--secondary); /* セージグリーン */
+    border-color: var(--secondary);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   🏠 ★ 予約完了・サンクスページ画面 (VR事前予習UI・ジャパンディ調)
+   ========================================================================== */
+.thanks-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--primary-light); /* 明るいベージュベース */
+    z-index: 500;
+    display: none;
+    flex-direction: column;
+    padding: 2.5rem 1.5rem;
+}
+
+.thanks-screen.active {
+    display: flex;
+    animation: fadeInThanks 0.35s ease-out forwards;
+}
+
+@keyframes fadeInThanks {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.thanks-header-badge {
+    align-self: center;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(95, 117, 104, 0.15); /* セージグリーン半透明 */
+    color: var(--btn-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.thanks-title {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.thanks-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* 🕶️ VRプレビュー枠 */
+.vr-card {
+    background: linear-gradient(135deg, #f2ede4, #e8e1d7); /* 柔らかいジャパンディグラデーション */
+    border-radius: var(--radius-lg);
+    padding: 1.8rem;
+    text-align: center;
+    color: var(--text-main);
+    box-shadow: 0 8px 24px rgba(44, 48, 51, 0.05);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.vr-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(181, 157, 124, 0.15), transparent 60%);
+    pointer-events: none;
+}
+
+.vr-badge {
+    background-color: var(--btn-bg); /* セージグリーン */
+    color: #ffffff;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 99px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.vr-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+}
+
+.vr-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.vr-preview-img-wrap {
+    height: 160px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.vr-preview-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(0.5px) brightness(0.85); /* 明るさを調整 */
+}
+
+.vr-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 54px;
+    height: 54px;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(45, 43, 42, 0.2);
+    animation: vr-pulse 2s infinite;
+}
+
+@keyframes vr-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(95, 117, 104, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(95, 117, 104, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(95, 117, 104, 0); }
+}
+
+/* ==========================================================================
+   🖼️ 画像拡大用ライトボックス (Lightbox・ジャパンディ調)
+   ========================================================================== */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    background: rgba(249, 246, 240, 0.97); /* 明るいすりガラスアイボリー */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: var(--radius-md);
+    border: 1.5px solid rgba(181, 157, 124, 0.4);
+    box-shadow: 0 10px 30px rgba(45, 43, 42, 0.15);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.lightbox-overlay.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-caption {
+    font-family: var(--font-outfit);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main); /* ダークブラウン文字 */
+    margin-top: 1.2rem;
+    letter-spacing: 0.1em;
+    text-shadow: 0 1px 4px rgba(255,255,255,0.8);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.8rem;
+    color: var(--text-main);
+    font-size: 2.2rem;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    z-index: 610;
+}
+
+.lightbox-close:hover {
+    color: var(--secondary);
+}
+
+/* ギャラリーアイテムにポインターとホバーアクション */
+.gallery-item {
+    cursor: pointer;
+}
+
+.gallery-item:hover .amoeba-clip img {
+    transform: scale(1.06);
+}
+
+/* ==========================================================================
+   🖋️ ベクター＆SVG新規再現用追加スタイル
+   ========================================================================== */
+
+/* 手書き風矢印のベクター制御（精密S字波打ち） */
+.handwritten-arrow-svg {
+    width: 100px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(45, 43, 42, 0.12));
+}
+
+/* 見どころ（EVENT FEATURES）カードのアイコン重ね合わせ (崩れ完全解消) */
+.feat-icon-wrap {
+    position: absolute !important;
+    top: 50% !important;
+    right: 0.2rem !important;
+    transform: translateY(-50%) !important;
+    width: 2.8rem; /* 3.6rem から縮小 */
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feat-bg-amoeba-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.feat-icon-svg {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    z-index: 2;
+    color: var(--secondary);
+}
+
+/* 仕様詳細（RENOVATION DETAILS）の下部アーチSVGラッパー（1つに統合） */
+.details-arch-deco-svg-wrap {
+    width: 100%;
+    max-width: 360px;
+    margin: 2.2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.arch-yours-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+/* 1つの曲線上の太字ゴールドテキスト */
+.arch-svg-text {
+    font-family: var(--font-outfit);
+    font-weight: 900;
+    font-size: 1.45rem;
+    fill: var(--secondary);
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 4px rgba(45, 43, 42, 0.12);
+}
+
+.arch-lead-text {
+    width: 100%;
+    max-width: 340px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+    font-weight: 500;
+    word-break: keep-all;
+    margin-top: 1.2rem;
+    z-index: 4;
+}
+
+/* ギャラリー画像のSVGパターンマスク対応 (切れ・バグを完全解消) */
+.amoeba-svg-wrap {
+    width: 100%;
+    max-width: 165px;
+    height: auto; /* 高さを自動にし、アスペクト比崩れを防止 */
+    aspect-ratio: 1 / 1;
+    filter: drop-shadow(0 6px 15px rgba(45, 43, 42, 0.12));
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.amoeba-gallery-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.gallery-item:hover .amoeba-svg-wrap {
+    transform: scale(1.06);
+}
+
+/* ギャラリーラベルの視認性コントラストの向上 */
+.gallery-label {
+    font-family: var(--font-outfit);
+    font-size: 0.85rem;
+    color: #5a524c; /* サンドベージュに対してくっきり見やすい深いゴールドブラウンへ変更 */
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    margin-top: 0.2rem;
+}
+
+/* 左右の星のゆらゆらアニメーション */
+.svg-sparkle-group {
+    transform-origin: center;
+}
+
+.animate-sparkle-1 {
+    animation: sparkle-float-hq 4s infinite ease-in-out;
+}
+
+.animate-sparkle-2 {
+    animation: sparkle-float-hq 4s infinite ease-in-out 1.8s;
+}
+
+@keyframes sparkle-float-hq {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.08); opacity: 0.9; }
+}
+
+/* お電話でリンクのご予約案内カード（白半透明）枠内への移植スタイル */
+.footer-phone-link {
+    margin-top: 1.4rem;
+    width: 100%;
+    border-top: 1px dashed var(--border); /* カード内に溶け込む破線の上線 */
+    padding-top: 1.2rem;
+    text-align: center;
+    z-index: 2;
+}
+
+.phone-link-btn {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: inline-block;
+    padding: 0.4rem 1.4rem;
+    border-radius: 99px;
+    background: rgba(95, 117, 104, 0.06); /* 枠内で上品に浮き立つ微背景を設定 */
+    border: 1.5px dashed var(--border);
+    transition: all 0.2s ease;
+}
+
+.phone-link-btn:hover {
+    background: rgba(181, 157, 124, 0.15);
+    color: var(--secondary);
+    border-style: solid;
+}
+
+/* ==========================================================================
+   🏷️ 追加デザイン：日本語カテゴリラベル ＆ 性能ファクトタグ
+   ========================================================================== */
+
+/* ファーストビュー日本語カテゴリラベル */
+.hero-category-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--secondary); /* セージグリーン */
+    letter-spacing: 0.12em;
+    margin-bottom: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    line-height: 1.2;
+}
+
+.hero-category-label .category-lead {
+    font-size: 0.68rem;
+    color: var(--accent-warm); /* 差し色のテラコッタ */
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+/* 見どころタグコンテナ */
+.feat-tags {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0.4rem 0 0.6rem;
+    flex-wrap: wrap;
+}
+
+/* タグ単体のスタイル */
+.feat-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--secondary); /* セージグリーン */
+    background: rgba(95, 117, 104, 0.06); /* 極淡セージグリーン背景 */
+    border: 1px solid rgba(95, 117, 104, 0.18);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 0.03em;
+    display: inline-block;
+    line-height: 1.3;
+}
+
+/* テラコッタの強調タグ用 */
+.feat-tag.highlight {
+    color: var(--accent-warm); /* テラコッタ */
+    background: rgba(184, 125, 103, 0.06); /* 極淡テラコッタ背景 */
+    border-color: rgba(184, 125, 103, 0.18);
+}
+
+/* 👤 建築士アバタープロフィール用追加スタイル */
+.typo-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.architect-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+}
+.architect-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid var(--secondary); /* セージグリーンの極細枠 */
+    box-shadow: 0 3px 8px rgba(44, 48, 51, 0.06);
+}
+.architect-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.architect-text-wrap {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.architect-label {
+    font-family: var(--font-outfit);
+    font-size: 0.58rem;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 0.05em;
+}
+.architect-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* 🏢 社名・コピーライト用追加スタイル */
+.hero-brand-name {
+    font-family: var(--font-noto);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--secondary); /* セージグリーンで上品に */
+    letter-spacing: 0.22em;
+    margin-bottom: 0.6rem;
+    text-indent: 0.22em; /* センタリング微調整 */
+}
+.footer-copyright {
+    font-family: var(--font-noto);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 2.2rem;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   📱 スマートフォン・モバイル用レスポンシブ表示最適化 (max-width: 500px)
+   ========================================================================== */
+@media (max-width: 500px) {
+    /* 🔹 セクション全体の余白調整 */
+    .section {
+        padding: 2.5rem 1rem;
+    }
+
+    /* 🏠 1. ファーストビュー (FV) */
+    .hero {
+        padding: 2.5rem 1rem 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem; /* タイトルの縮小 */
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-meta {
+        font-size: 0.88rem;
+    }
+    
+    .hero-date {
+        font-size: 1.05rem;
+    }
+
+    /* 画像と背景アメーバのレスポンシブ比率維持 */
+    .hero-image-wrap {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 440 / 320;
+        margin-top: 1rem;
+    }
+    
+    .hero-blob-shape {
+        width: 86%;
+        height: auto;
+        aspect-ratio: 380 / 290;
+    }
+    
+    .hero-blob-bg-svg {
+        width: 93%;
+        height: auto;
+        aspect-ratio: 410 / 310;
+        transform: rotate(-3deg) translate(-2%, -2%);
+    }
+    
+    .hero-blob-line {
+        width: 50%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        bottom: -5%;
+        right: -5%;
+    }
+    
+    /* 背景装飾アメーバの縮小（はみ出し防止） */
+    .bg-blob-left-top {
+        width: 120px;
+        height: 120px;
+        top: -1.5rem;
+        left: -1.5rem;
+    }
+    
+    .bg-blob-right-bottom {
+        width: 100px;
+        height: 100px;
+        top: 12rem;
+        right: -1.5rem;
+    }
+
+    /* 📝 2. TYPOGRAPHY (タイポグラフィセクション) */
+    .typography-section {
+        padding: 2.5rem 1rem 3.5rem;
+    }
+
+    .typo-grid {
+        grid-template-columns: 1fr; /* 縦1列に並び替え */
+        gap: 1.8rem;
+    }
+    
+    .typo-left {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .typo-heading {
+        font-size: 1.45rem;
+    }
+
+    .typo-right {
+        align-items: center;
+        text-align: center;
+        padding-top: 0;
+    }
+    
+    .typo-japanese-lead {
+        font-size: 0.85rem;
+        line-height: 1.8;
+    }
+    
+    .architect-meta {
+        justify-content: center;
+        margin-top: 0.6rem;
+    }
+
+    /* 手書き風矢印の調整 */
+    .arrow-deco {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin: 1.5rem auto 0;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .handwritten-arrow-svg {
+        transform: rotate(75deg); /* 縦並びなので下向き気味に傾ける */
+        width: 60px;
+    }
+
+    /* 🖼️ 3. EVENT FEATURES (見どころ3選) */
+    .feature-card {
+        grid-template-columns: 1fr; /* 縦1列に並び替え */
+        gap: 1.2rem;
+        padding: 1rem;
+    }
+    
+    .feat-img-container {
+        height: 160px; /* 縦並びなので画像を適切なサイズで見せる */
+        width: 100%;
+    }
+    
+    .feat-content {
+        padding-right: 3.8rem; /* 右側にアイコン用のスペースを広めに確保 */
+        position: relative;
+    }
+    
+    .feat-title {
+        font-size: 1rem;
+        padding-right: 0;
+    }
+    
+    .feat-icon-wrap {
+        top: 50% !important;
+        right: 0.5rem !important;
+        transform: translateY(-50%) !important; /* 縦中央に綺麗に配置 */
+    }
+
+    /* 🎨 4. RENOVATION DETAILS (仕様詳細) */
+    .gallery-row-2col {
+        gap: 1rem; /* 隙間を縮小して画面内に収める */
+    }
+    
+    .details-arch-deco-svg-wrap {
+        margin-top: 1.5rem;
+    }
+    
+    .arch-svg-text {
+        font-size: 1.25rem; /* テキストサイズを調整してアーチからはみ出さないようにする */
+    }
+
+    /* 🪵 5. フッター (CTA) */
+    .footer-cta {
+        padding: 3rem 1rem;
+    }
+    
+    .cta-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .cta-card-title {
+        font-size: 1.05rem;
+    }
+    
+    .cta-card-text {
+        font-size: 0.78rem;
+    }
+
+    .cta-steps {
+        gap: 0.3rem;
+    }
+    
+    .step-txt {
+        font-size: 0.62rem;
+    }
+    
+    .step-arrow {
+        font-size: 0.7rem;
+    }
+}
+
+/* ==========================================================================
+   🔍 ギャラリー画像拡大ガイド (zoom-badge & guide)
+   ========================================================================== */
+.amoeba-svg-wrap {
+    position: relative; /* ズームバッジの絶対配置の基準点 */
+}
+
+.zoom-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 14%;
+    background: rgba(95, 117, 104, 0.9); /* セージグリーン */
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    pointer-events: none; /* タップイベントを画像本体に通す */
+    z-index: 10;
+}
+
+.gallery-zoom-guide {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    opacity: 0.8;
+}
+
+.gallery-item {
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   🚗 W見学セクション（立野リノベ案内）オーガニックトンマナ調整
+   ========================================================================== */
+.w-visit-card {
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(181, 157, 124, 0.35);
+    border-radius: var(--radius-md);
+    padding: 1.8rem 1.5rem;
+    max-width: 440px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.w-visit-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 90px;
+    height: 90px;
+    background: rgba(95, 117, 104, 0.05); /* 薄いセージグリーンアメーバ */
+    border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.deco-handwritten-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-warm); /* テラコッタ */
+    background: rgba(184, 125, 103, 0.08);
+    border: 1.5px solid var(--accent-warm);
+    border-radius: 99px;
+    padding: 0.25rem 0.9rem;
+    letter-spacing: 0.06em;
+    display: inline-block;
+    position: relative;
+    transform: rotate(-1.5deg); /* 手書きの揺らぎを出すため少し傾ける */
+    font-family: var(--font-noto);
+}
+
+.amoeba-tateno-wrap {
+    display: flex;
+    gap: 0.8rem;
+    width: 100%;
+    justify-content: center;
+    z-index: 2;
+}
+
+.amoeba-tateno-img {
+    flex: 1;
+    height: 105px;
+    overflow: hidden;
+    position: relative;
+    filter: drop-shadow(0 4px 8px rgba(45, 43, 42, 0.08));
+    transition: transform 0.3s ease;
+}
+
+.amoeba-tateno-img:hover {
+    transform: scale(1.04);
+}
+
+.amoeba-tateno-img.img-1 {
+    border-radius: 60% 40% 50% 50% / 40% 50% 50% 60%;
+}
+
+.amoeba-tateno-img.img-2 {
+    border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+}
+
+.amoeba-tateno-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.w-visit-list {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    padding-left: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+    list-style: none; /* デフォルトの丸を廃止 */
+}
+
+.w-visit-list li {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.w-visit-list li::before {
+    content: '▪';
+    position: absolute;
+    left: -1rem;
+    color: var(--secondary); /* セージグリーン */
+    font-size: 0.65rem;
+    top: -0.05rem;
+}
