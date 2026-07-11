@@ -138,24 +138,24 @@
                         <span style="display: inline-block;">なぜ、この家は</span><span style="display: inline-block;">多くの人に</span><span style="display: inline-block;">「選ばれ続けた」のか？</span>
                     </div>
                     
-                    <!-- 💡 選ばれた3つの理由（即時アンサーブロック・アンカーリンク化） -->
+                    <!-- 💡 選ばれた3つの理由（即時アンサーブロック・URLを汚さないジャンプ化） -->
                     <div class="quick-reasons-box" style="background: rgba(95, 117, 104, 0.05); border-left: 3px solid var(--secondary); border-radius: 4px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; text-align: left;">
                         <div style="font-size: 0.65rem; color: var(--secondary); font-weight: 800; letter-spacing: 0.05em; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.2rem;"><i class="fa-solid fa-arrow-down" style="font-size: 0.6rem;"></i> タップで各項目の詳細へ移動します</div>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
                             <li>
-                                <a href="#feat-1" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+                                <a href="javascript:void(0)" onclick="document.getElementById('feat-1').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
                                     <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 1. 家事時間を30分減らす「ゼロ歩動線」</span>
                                     <span style="font-size: 0.62rem; color: var(--secondary); font-weight: 700; opacity: 0.9;">詳細 ➔</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#feat-2" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+                                <a href="javascript:void(0)" onclick="document.getElementById('feat-2').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
                                     <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 2. エアコン1台で家中涼しい「高断熱設計」</span>
                                     <span style="font-size: 0.62rem; color: var(--secondary); font-weight: 700; opacity: 0.9;">詳細 ➔</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#feat-3" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+                                <a href="javascript:void(0)" onclick="document.getElementById('feat-3').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
                                     <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 3. 勾配天井リビングと和室の「繋がり」</span>
                                     <span style="font-size: 0.62rem; color: var(--secondary); font-weight: 700; opacity: 0.9;">詳細 ➔</span>
                                 </a>
@@ -558,6 +558,11 @@
 
     <!-- ⚙️ JavaScript 動的UI制御 -->
     <script>
+        // 🟢 ブラウザのスクロール位置自動復元を無効化し、常に最上部から表示
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
         const EVENT_DATE = { year: 2026, month: 7, days: [18, 19, 20] };
         const WEEK_DAYS = ['日', '月', '火', '水', '木', '金', '土'];
         
