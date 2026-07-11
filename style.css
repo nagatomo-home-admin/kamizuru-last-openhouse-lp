@@ -1279,12 +1279,20 @@ h1, h2, h3, h4 {
 
 .lightbox-caption {
     font-family: var(--font-outfit);
-    font-size: 1.1rem;
+    font-size: clamp(0.85rem, 3.5vw, 1.02rem); /* 🟢 画面幅に応じて流動縮小 */
     font-weight: 700;
     color: var(--text-main); /* ダークブラウン文字 */
     margin-top: 1.2rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     text-shadow: 0 1px 4px rgba(255,255,255,0.8);
+    /* 🟢 単語の途中での不自然な改行を防ぐ自動折り返し制御 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    /* 🟢 両サイドの余白をさらに広く確保し、端へのへばりつきを解消 */
+    max-width: 82%;
+    text-align: center;
+    padding: 0 1.5rem;
+    line-height: 1.6;
 }
 
 .lightbox-close {
