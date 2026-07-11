@@ -671,7 +671,13 @@
 
         function closeThanks() {
             const thanksEl = document.getElementById('thanks-screen');
-            if (thanksEl) thanksEl.classList.remove('active');
+            if (thanksEl) {
+                thanksEl.classList.remove('active');
+                // 🟢 300msのフェードアウト後に、物理的に非表示化（透明な板を残さない）
+                setTimeout(() => {
+                    thanksEl.style.display = 'none';
+                }, 300);
+            }
             const ctaBar = document.querySelector('.floating-cta-bar');
             if (ctaBar) {
                 ctaBar.style.display = '';
