@@ -900,20 +900,36 @@ h1, h2, h3, h4 {
    ========================================================================== */
 .floating-cta-bar {
     position: fixed;
-    bottom: 0; /* 画面の最下部ぴったりに固定 */
+    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
-    width: 100%; /* 横幅いっぱいに広げる */
-    max-width: 500px; /* コンテナの最大幅に合わせる */
-    background: rgba(249, 246, 240, 0.96); /* すりガラス効果を高めて背後の文字被りを防ぐ */
+    transform: translate(-50%, 100%); /* 初期状態は画面外に隠す */
+    width: 100%;
+    max-width: 500px;
+    background: rgba(249, 246, 240, 0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid var(--border); /* 上部のみ境界線を入れる */
-    border-radius: 0; /* 角丸をなくす */
-    padding: 0.8rem 1.2rem calc(0.8rem + env(safe-area-inset-bottom, 0px)); /* 下部にiPhone等のセーフエリア余白を確保 */
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    padding: 0.5rem 1.2rem calc(0.5rem + env(safe-area-inset-bottom, 0px)); /* 上下パディングを0.8remから0.5remへスリム化 */
     z-index: 90;
-    box-shadow: 0 -4px 16px rgba(44, 48, 51, 0.08); /* 影を上向きに変更 */
+    box-shadow: 0 -4px 16px rgba(44, 48, 51, 0.08);
     box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease; /* 滑らかな出現アニメーション */
+}
+
+/* スクロール検知で追加される表示クラス */
+.floating-cta-bar.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 追従バー内のボタンのみ高さを少し抑えてスリム化 */
+.floating-cta-bar .btn {
+    height: 45px;
+    font-size: 0.9rem;
 }
 
 .floating-cta-btn {

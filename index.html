@@ -131,7 +131,23 @@
 
             <div class="typo-grid">
                 <div class="typo-left">
-                    <h2 class="typo-heading">なぜ、この家は多くの人に「選ばれ続けた」のか？</h2>
+                    <div class="typo-heading" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; color: var(--text-main); line-height: 1.35; margin-bottom: 0.6rem;">なぜ、この家は多くの人に「選ばれ続けた」のか？</div>
+                    
+                    <!-- 💡 選ばれた3つの理由（即時アンサーブロック） -->
+                    <div class="quick-reasons-box" style="background: rgba(95, 117, 104, 0.05); border-left: 3px solid var(--secondary); border-radius: 4px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; text-align: left;">
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem;">
+                            <li style="font-size: 0.78rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
+                                <i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 1. 家事時間を30分減らす「ゼロ歩動線」
+                            </li>
+                            <li style="font-size: 0.78rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
+                                <i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 2. エアコン1台で家中涼しい「高断熱設計」
+                            </li>
+                            <li style="font-size: 0.78rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
+                                <i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 3. 勾配天井リビングと和室の「繋がり」
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="typo-event-info">
                         <p class="typo-date" id="typo-event-date" style="font-size: 0.95rem;">202x年X月X日(土) 〜 X日(月・祝)<br><span style="font-size: 0.82rem; color: var(--accent-warm); font-weight: 700; display: inline-block; margin-top: 0.15rem;">【3日間限定】</span></p>
                         <p class="typo-time">10:00 - 17:00</p>
@@ -309,7 +325,7 @@
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-kitchen', 'Kitchen - パントリー（食品庫）と大容量背面収納でいつもスッキリ')">
                         <div class="amoeba-svg-wrap">
                             <svg class="amoeba-gallery-svg" viewBox="0 0 100 100">
-                                <path d="M25,5 C45,-5 75,5 90,20 C105,40 95,65 80,85 C65,100 35,100 15,85 C-5,65 -5,35 10,15 Z" fill="url(#pat-kitchen)" />
+                                <rect x="2" y="2" width="96" height="96" rx="16" ry="16" fill="url(#pat-kitchen)" />
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
@@ -319,7 +335,7 @@
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-tatami', 'Tatami - 4.5帖の落ち着いた和室。おもちゃや本が片付くオープンラック付')">
                         <div class="amoeba-svg-wrap">
                             <svg class="amoeba-gallery-svg" viewBox="0 0 100 100">
-                                <path d="M15,15 C35,-5 75,5 85,25 C95,45 90,75 70,85 C50,95 20,90 10,70 C-0,50 0,30 15,15 Z" fill="url(#pat-tatami)" />
+                                <rect x="2" y="2" width="96" height="96" rx="16" ry="16" fill="url(#pat-tatami)" />
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
@@ -332,7 +348,7 @@
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-washroom', 'Washroom - 家事カウンター付ランドリー ＆ 独立洗面スペース')">
                         <div class="amoeba-svg-wrap">
                             <svg class="amoeba-gallery-svg" viewBox="0 0 100 100">
-                                <path d="M20,10 C40,0 70,10 80,30 C90,50 90,80 70,90 C50,100 20,90 10,70 C0,50 0,20 20,10 Z" fill="url(#pat-washroom)" />
+                                <rect x="2" y="2" width="96" height="96" rx="16" ry="16" fill="url(#pat-washroom)" />
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
@@ -342,7 +358,7 @@
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-window', 'Living - ナラ無垢材が心地よい18.5帖大空間 ＆ 深い軒とタイルテラス')">
                         <div class="amoeba-svg-wrap">
                             <svg class="amoeba-gallery-svg" viewBox="0 0 100 100">
-                                <path d="M25,15 C45,5 65,15 85,30 C95,50 85,80 60,90 C35,100 15,80 8,60 C0,40 5,25 25,15 Z" fill="url(#pat-window)" />
+                                <rect x="2" y="2" width="96" height="96" rx="16" ry="16" fill="url(#pat-window)" />
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
@@ -355,7 +371,7 @@
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-entrance', 'Entrance - いつもスッキリ片付くシューズクローク(SC) ＆ 蓄電池V2H置場')">
                         <div class="amoeba-svg-wrap">
                             <svg class="amoeba-gallery-svg" viewBox="0 0 100 100">
-                                <path d="M15,15 C35,-5 75,5 85,25 C95,45 90,75 70,85 C50,95 20,90 10,70 C-0,50 0,30 15,15 Z" fill="url(#pat-entrance)" />
+                                <rect x="2" y="2" width="96" height="96" rx="16" ry="16" fill="url(#pat-entrance)" />
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
@@ -365,7 +381,7 @@
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-exterior', 'Exterior - 太陽光発電によるゼロエネ仕様 ＆ 日射を遮る深い軒')">
                         <div class="amoeba-svg-wrap">
                             <svg class="amoeba-gallery-svg" viewBox="0 0 100 100">
-                                <path d="M25,15 C45,5 65,15 85,30 C95,50 85,80 60,90 C35,100 15,80 8,60 C0,40 5,25 25,15 Z" fill="url(#pat-exterior)" />
+                                <rect x="2" y="2" width="96" height="96" rx="16" ry="16" fill="url(#pat-exterior)" />
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
@@ -483,8 +499,9 @@
 
         <!-- 🟢 追従型フローティングCTAボタン -->
         <div class="floating-cta-bar glass-effect">
-            <a href="https://liff.line.me/2008950675-MNVKqsTV?booking_event_id=38871&ts=1783743084" target="_blank" class="btn btn-metallic-gold pulse-btn floating-cta-btn" style="text-decoration: none;">
-                <i class="fa-brands fa-line"></i> LINEでかんたん予約
+            <a href="https://liff.line.me/2008950675-MNVKqsTV?booking_event_id=38871&ts=1783743084" target="_blank" class="btn btn-metallic-gold pulse-btn floating-cta-btn" style="text-decoration: none; flex-direction: column; gap: 0.05rem; padding: 0.35rem 1.2rem;">
+                <span style="font-size: 0.6rem; font-weight: 700; opacity: 0.95; letter-spacing: 0.05em; display: block; transform: translateY(1px);">【完全予約制・無料】</span>
+                <span style="font-size: 0.9rem; font-weight: 900; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.35rem;"><i class="fa-brands fa-line"></i> LINEでかんたん予約</span>
             </a>
         </div>
 
@@ -541,6 +558,26 @@
                 const ctaBar = document.querySelector('.floating-cta-bar');
                 if (ctaBar) ctaBar.style.display = 'none';
                 window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+
+            // 🟢 追従予約ボタンのふわっとスクロール出現制御
+            const ctaBar = document.querySelector('.floating-cta-bar');
+            if (ctaBar) {
+                window.addEventListener('scroll', () => {
+                    const thanksScreen = document.getElementById('thanks-screen');
+                    // サンクス画面が出ている時は追従バーを出さない
+                    if (thanksScreen && thanksScreen.style.display === 'flex') {
+                        ctaBar.classList.remove('show');
+                        return;
+                    }
+                    
+                    // スクロール率30%以上で表示
+                    if (window.scrollY > window.innerHeight * 0.3) {
+                        ctaBar.classList.add('show');
+                    } else {
+                        ctaBar.classList.remove('show');
+                    }
+                });
             }
         });
 
