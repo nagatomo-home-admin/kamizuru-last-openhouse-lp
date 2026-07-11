@@ -1419,9 +1419,10 @@ h1, h2, h3, h4 {
 /* ギャラリーラベルの視認性コントラストの向上 */
 .gallery-label {
     font-family: var(--font-noto);
-    font-size: 0.74rem; /* 日本語12文字が美しく収まるように微調整 */
+    font-size: clamp(0.68rem, 3.2vw, 0.74rem); /* スマホ画面幅に合わせて滑らかに縮小し、崩れを防止 */
+    white-space: nowrap; /* どんな極小画面でも途中で改行させない */
     color: #5a524c;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em; /* 字間を少し詰めて収まりを良くする */
     font-weight: 800;
     margin-top: 0.35rem;
     text-align: center;
