@@ -1418,12 +1418,14 @@ h1, h2, h3, h4 {
 
 /* ギャラリーラベルの視認性コントラストの向上 */
 .gallery-label {
-    font-family: var(--font-outfit);
-    font-size: 0.85rem;
-    color: #5a524c; /* サンドベージュに対してくっきり見やすい深いゴールドブラウンへ変更 */
-    letter-spacing: 0.05em;
-    font-weight: 700;
-    margin-top: 0.2rem;
+    font-family: var(--font-noto);
+    font-size: 0.74rem; /* 日本語12文字が美しく収まるように微調整 */
+    color: #5a524c;
+    letter-spacing: 0.02em;
+    font-weight: 800;
+    margin-top: 0.35rem;
+    text-align: center;
+    line-height: 1.35;
 }
 
 /* 左右の星のゆらゆらアニメーション */

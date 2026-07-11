@@ -133,17 +133,27 @@
                 <div class="typo-left">
                     <div class="typo-heading" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; color: var(--text-main); line-height: 1.35; margin-bottom: 0.6rem;">なぜ、この家は多くの人に「選ばれ続けた」のか？</div>
                     
-                    <!-- 💡 選ばれた3つの理由（即時アンサーブロック） -->
+                    <!-- 💡 選ばれた3つの理由（即時アンサーブロック・アンカーリンク化） -->
                     <div class="quick-reasons-box" style="background: rgba(95, 117, 104, 0.05); border-left: 3px solid var(--secondary); border-radius: 4px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; text-align: left;">
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem;">
-                            <li style="font-size: 0.78rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
-                                <i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 1. 家事時間を30分減らす「ゼロ歩動線」
+                        <div style="font-size: 0.65rem; color: var(--secondary); font-weight: 800; letter-spacing: 0.05em; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.2rem;"><i class="fa-solid fa-arrow-down" style="font-size: 0.6rem;"></i> タップで各項目の詳細へ移動します</div>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li>
+                                <a href="#feat-1" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+                                    <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 1. 家事時間を30分減らす「ゼロ歩動線」</span>
+                                    <span style="font-size: 0.62rem; color: var(--secondary); font-weight: 700; opacity: 0.9;">詳細 ➔</span>
+                                </a>
                             </li>
-                            <li style="font-size: 0.78rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
-                                <i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 2. エアコン1台で家中涼しい「高断熱設計」
+                            <li>
+                                <a href="#feat-2" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+                                    <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 2. エアコン1台で家中涼しい「高断熱設計」</span>
+                                    <span style="font-size: 0.62rem; color: var(--secondary); font-weight: 700; opacity: 0.9;">詳細 ➔</span>
+                                </a>
                             </li>
-                            <li style="font-size: 0.78rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
-                                <i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 3. 勾配天井リビングと和室の「繋がり」
+                            <li>
+                                <a href="#feat-3" style="text-decoration: none; color: var(--text-main); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+                                    <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-circle-check" style="color: var(--secondary); font-size: 0.85rem;"></i> 3. 勾配天井リビングと和室の「繋がり」</span>
+                                    <span style="font-size: 0.62rem; color: var(--secondary); font-weight: 700; opacity: 0.9;">詳細 ➔</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -196,7 +206,7 @@
             </div>
             
             <!-- 見どころ 1 -->
-            <div class="feature-card">
+            <div class="feature-card" id="feat-1">
                 <div class="feat-img-container">
                     <img src="images/photo_washroom.jpg" alt="毎日の家事時間を30分減らす暮らしのゼロ歩動線">
                 </div>
@@ -225,7 +235,7 @@
             </div>
 
             <!-- 見どころ 2 -->
-            <div class="feature-card">
+            <div class="feature-card" id="feat-2">
                 <div class="feat-img-container">
                     <img src="images/IMG_8978.JPG" alt="深い軒による日射遮蔽と高断熱">
                 </div>
@@ -252,7 +262,7 @@
             </div>
 
             <!-- 見どころ 3 -->
-            <div class="feature-card">
+            <div class="feature-card" id="feat-3">
                 <div class="feat-img-container">
                     <img src="images/photo_window.jpg" alt="開放感あふれる18.5帖の勾配天井LDK">
                 </div>
@@ -329,8 +339,7 @@
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
-                        <h3 class="gallery-label">Kitchen</h3>
-                        <span class="gallery-zoom-guide">タップで拡大</span>
+                        <h3 class="gallery-label">食品庫直行キッチン</h3>
                     </div>
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-tatami', 'Tatami - 4.5帖の落ち着いた和室。おもちゃや本が片付くオープンラック付')">
                         <div class="amoeba-svg-wrap">
@@ -339,8 +348,7 @@
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
-                        <h3 class="gallery-label">Tatami</h3>
-                        <span class="gallery-zoom-guide">タップで拡大</span>
+                        <h3 class="gallery-label">収納付 4.5帖の和室</h3>
                     </div>
                 </div>
 
@@ -352,8 +360,7 @@
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
-                        <h3 class="gallery-label">Washroom</h3>
-                        <span class="gallery-zoom-guide">タップで拡大</span>
+                        <h3 class="gallery-label">家事カウンター付洗面</h3>
                     </div>
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-window', 'Living - ナラ無垢材が心地よい18.5帖大空間 ＆ 深い軒とタイルテラス')">
                         <div class="amoeba-svg-wrap">
@@ -362,8 +369,7 @@
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
-                        <h3 class="gallery-label">Living</h3>
-                        <span class="gallery-zoom-guide">タップで拡大</span>
+                        <h3 class="gallery-label">勾配天井のナラ無垢LDK</h3>
                     </div>
                 </div>
 
@@ -375,8 +381,7 @@
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
-                        <h3 class="gallery-label">Entrance</h3>
-                        <span class="gallery-zoom-guide">タップで拡大</span>
+                        <h3 class="gallery-label">大型シューズクローク</h3>
                     </div>
                     <div class="gallery-item" onclick="openLightboxForPattern('pat-exterior', 'Exterior - 太陽光発電によるゼロエネ仕様 ＆ 日射を遮る深い軒')">
                         <div class="amoeba-svg-wrap">
@@ -385,8 +390,7 @@
                             </svg>
                             <div class="zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                         </div>
-                        <h3 class="gallery-label">Exterior</h3>
-                        <span class="gallery-zoom-guide">タップで拡大</span>
+                        <h3 class="gallery-label">太陽光と深い軒のゼロエネ</h3>
                     </div>
                 </div>
             </div>
